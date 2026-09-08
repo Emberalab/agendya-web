@@ -2,39 +2,45 @@ import type { BenefitItem } from '../types';
 
 export const BENEFITS: BenefitItem[] = [
   {
-    id: 'never-lose-appointment',
-    title: 'Nunca vuelvas a perder una cita',
-    description: 'Recordatorios automáticos que reducen las inasistencias de tus clientes.',
+    id: 'always-available',
+    title: 'Tu agenda siempre disponible',
+    description:
+      'Incluso mientras duermes, entrenas o estás en una cita. Tus clientes siempre tienen un espacio listo.',
     icon: 'CalendarCheck2',
   },
   {
-    id: 'organized-agenda',
-    title: 'Tu agenda, siempre organizada',
-    description: 'Visualiza tu día, semana o mes completo desde cualquier dispositivo.',
-    icon: 'LayoutGrid',
-  },
-  {
-    id: 'more-time',
-    title: 'Recupera horas de tu semana',
-    description: 'Deja de responder uno a uno por WhatsApp para coordinar horarios.',
-    icon: 'Clock',
-  },
-  {
-    id: 'happier-clients',
-    title: 'Clientes más contentos',
-    description: 'Confirmaciones y recordatorios automáticos que generan confianza.',
-    icon: 'Smile',
-  },
-  {
-    id: 'no-double-booking',
-    title: 'Cero dobles reservas',
-    description: 'Agendya bloquea automáticamente los horarios ya ocupados.',
+    id: 'no-overlaps',
+    title: 'Evita horarios cruzados',
+    description:
+      'Nuestro motor previene automáticamente choques o reservas dobles. Cero errores de coordinación.',
     icon: 'ShieldCheck',
   },
   {
-    id: 'grow-business',
-    title: 'Haz crecer tu negocio',
-    description: 'Más citas cumplidas significan más ingresos cada mes.',
+    id: 'services-in-one-place',
+    title: 'Tus servicios en un solo lugar',
+    description:
+      'Muestra tu catálogo, precios, duración y modalidad de forma atractiva y totalmente transparente.',
+    icon: 'LayoutGrid',
+  },
+  {
+    id: 'control-your-day',
+    title: 'Controla tu día',
+    description:
+      'Define descansos, bloquea días específicos y maneja tus tiempos de preparación entre citas fácilmente.',
+    icon: 'Clock',
+  },
+  {
+    id: 'single-link',
+    title: 'Comparte un solo enlace',
+    description:
+      'Simplifica tu comunicación con un único link que contiene todo tu perfil profesional.',
+    icon: 'Link2',
+  },
+  {
+    id: 'more-time',
+    title: 'Más tiempo para tu negocio',
+    description:
+      'Dedica las horas que antes perdías respondiendo chats a mejorar tu servicio o descansar.',
     icon: 'TrendingUp',
   },
 ];

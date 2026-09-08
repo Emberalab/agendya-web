@@ -4,28 +4,47 @@ interface LogoProps {
   variant?: 'dark' | 'light';
 }
 
+/**
+ * Marca Agendya: isotipo "A" (mismo trazado que el favicon) + logotipo
+ * "agendya" en Outfit Bold. `variant="light"` para fondos oscuros (footer).
+ */
 export function Logo({ className = '', showWordmark = true, variant = 'dark' }: LogoProps) {
   return (
-    <div className={`flex items-center gap-2.5 ${className}`}>
-      <svg width="36" height="36" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-        <rect x="4" y="4" width="56" height="56" rx="18" fill="#D14D7A" />
-        <rect x="16" y="17" width="32" height="28" rx="6" stroke="#FFFFFF" strokeWidth="3.2" />
-        <path d="M16 26H48" stroke="#FFFFFF" strokeWidth="3.2" strokeLinecap="round" />
-        <path d="M23 12V20" stroke="#FFFFFF" strokeWidth="3.2" strokeLinecap="round" />
-        <path d="M41 12V20" stroke="#FFFFFF" strokeWidth="3.2" strokeLinecap="round" />
-        <circle cx="47" cy="47" r="12" fill="#3ECF8E" stroke="#FFFFFF" strokeWidth="2.5" />
+    <div className={`flex items-center gap-2 ${className}`}>
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+        className="shrink-0"
+      >
         <path
-          d="M42 47L45.5 50.5L52.5 43.5"
-          stroke="#FFFFFF"
-          strokeWidth="2.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M23.616 22.4255C23.2151 23.7975 21.8695 24.1157 20.7581 23.9663C19.274 23.7663 17.9806 22.2156 16.7268 21.0723C15.5882 20.0342 13.8148 19.7437 11.856 20.1373C12.8327 19.4669 13.7952 18.7571 14.7779 18.1029C18.8356 15.4015 22.3991 17.6596 23.616 22.4255Z"
+          fill="#4F46E5"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M2.55124 13.1332C0.983252 15.7455 0.18754 17.7132 0.0294836 19.3624C-0.178988 21.5408 0.71257 23.5995 2.87982 23.9488C6.54924 24.5401 12.3634 19.8518 14.8154 18.2115C18.8694 15.5001 22.4296 17.7666 23.6454 22.5508C25.3986 16.1722 20.4642 10.1989 12.9613 13.6699C11.1631 14.5024 9.36461 15.3352 7.56628 16.1674C4.856 17.4215 1.70451 16.9004 2.55124 13.1332Z"
+          fill="#9E9BD8"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M2.49534 13.2777C4.12711 10.198 6.01042 6.49486 7.77813 3.58591C8.95147 1.65487 10.286 0.021352 11.6294 0.000431524C13.88 -0.0344091 14.7805 2.04709 15.7526 3.84488C17.2421 6.59961 18.542 9.28894 20.04 12.1737C17.5557 11.2813 16.2341 11.4791 13.5758 12.3651C12.5592 10.3256 11.4079 7.76206 9.5157 11.5966L7.52347 16.2901C5.02587 17.4414 1.60862 17.215 2.49534 13.2777Z"
+          fill="#4F46E5"
         />
       </svg>
       {showWordmark && (
-        <span className="text-xl font-bold tracking-tight">
-          <span className={variant === 'dark' ? 'text-brand-navy' : 'text-white'}>agend</span>
-          <span className="text-brand-pink">ya</span>
+        <span
+          className={`font-display text-xl font-bold tracking-tight ${
+            variant === 'dark' ? 'text-brand-ink' : 'text-white'
+          }`}
+        >
+          agendya
         </span>
       )}
     </div>

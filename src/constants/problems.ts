@@ -2,45 +2,33 @@ import type { ProblemItem } from '../types';
 
 export const PROBLEMS: ProblemItem[] = [
   {
-    id: 'forgotten-appointments',
-    title: 'Citas que se te olvidan',
-    description:
-      'Sin recordatorios automáticos, los clientes faltan y tu silla o sillón queda vacío ese horario.',
-    icon: 'CalendarX',
-  },
-  {
-    id: 'paper-agenda',
-    title: 'Agenda de papel',
-    description:
-      'Se moja, se pierde, se llena de tachones y nadie más del equipo la puede consultar a tiempo.',
-    icon: 'BookX',
-  },
-  {
-    id: 'messy-whatsapp',
-    title: 'WhatsApp desordenado',
-    description:
-      'Las citas se agendan entre cientos de chats y es fácil perder el hilo de quién reservó qué.',
+    id: 'messages-all-day',
+    title: 'Mensajes todo el día',
+    description: 'Contestar mensajes de WhatsApp a deshoras corta tu ritmo y paz mental.',
     icon: 'MessageSquareWarning',
   },
   {
-    id: 'double-bookings',
-    title: 'Dobles reservas',
-    description:
-      'Dos clientes llegan a la misma hora y alguno se va molesto, quizás para no volver nunca.',
+    id: 'crossed-appointments',
+    title: 'Citas cruzadas',
+    description: 'El horror de agendar a dos personas a la misma hora por un descuido.',
+    icon: 'CalendarX2',
+  },
+  {
+    id: 'scattered-info',
+    title: 'Información dispersa',
+    description: 'Papelitos, cuadernos y chats donde se pierden los detalles del cliente.',
     icon: 'Users',
   },
   {
-    id: 'lost-revenue',
-    title: 'Pérdida de ingresos',
-    description:
-      'Cada cita perdida o mal agendada es dinero que no vuelve a entrar a tu negocio.',
-    icon: 'TrendingDown',
+    id: 'cancellations',
+    title: 'Cancelaciones',
+    description: 'Clientes que no asisten y te enteras en el último minuto sin aviso previo.',
+    icon: 'Ban',
   },
   {
-    id: 'missed-messages',
-    title: 'Mensajes perdidos',
-    description:
-      'Clientes que escriben para agendar y nunca reciben respuesta a tiempo, así que reservan en otro lado.',
-    icon: 'MailQuestion',
+    id: 'less-time',
+    title: 'Menos tiempo para atender',
+    description: 'Pasas más tiempo coordinando y confirmando que prestando tu servicio.',
+    icon: 'Clock',
   },
 ];

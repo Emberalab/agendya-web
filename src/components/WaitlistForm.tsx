@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
 import { Input } from './Input';
 import { Button } from './Button';
@@ -15,23 +14,15 @@ export function WaitlistForm({ className = '', id }: WaitlistFormProps) {
 
   if (status === 'success') {
     return (
-      <motion.div
+      <div
         id={id}
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className={`flex flex-col items-center gap-3 rounded-2xl border border-brand-mint/30 bg-brand-mint/10 px-6 py-10 text-center ${className}`}
+        role="status"
+        className={`flex flex-col items-center gap-3 rounded-2xl border border-brand-success/30 bg-brand-success/10 px-6 py-10 text-center ${className}`}
       >
-        <motion.span
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: 'spring', stiffness: 260, damping: 18 }}
-        >
-          <CheckCircle2 size={48} className="text-brand-mint" aria-hidden="true" />
-        </motion.span>
-        <h3 className="text-lg font-bold text-brand-navy">{COPY.form.successTitle}</h3>
-        <p className="max-w-sm text-sm text-brand-text-secondary">{COPY.form.successSubtitle}</p>
-      </motion.div>
+        <CheckCircle2 size={48} className="text-brand-success" aria-hidden="true" />
+        <h3 className="text-lg font-bold text-brand-ink">{COPY.form.successTitle}</h3>
+        <p className="max-w-sm text-sm text-brand-text">{COPY.form.successSubtitle}</p>
+      </div>
     );
   }
 
@@ -97,7 +88,7 @@ export function WaitlistForm({ className = '', id }: WaitlistFormProps) {
       <Button type="submit" isLoading={status === 'loading'} className="mt-1 w-full">
         {status === 'loading' ? COPY.form.submitting : COPY.form.submit}
       </Button>
-      <p className="text-center text-xs text-brand-text-secondary">{COPY.form.privacy}</p>
+      <p className="text-center text-xs text-brand-text">{COPY.form.privacy}</p>
     </form>
   );
 }

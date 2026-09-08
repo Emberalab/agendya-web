@@ -41,13 +41,17 @@ export interface ProblemItem {
 
 export interface StepItem {
   id: string;
-  number: number;
+  number: string;
   title: string;
   description: string;
-  icon: string;
 }
 
-export interface TrustBusiness {
+export interface PricingPlan {
   id: string;
   name: string;
+  price: string;
+  period: string;
+  features: string[];
+  cta: string;
+  popular?: boolean;
 }

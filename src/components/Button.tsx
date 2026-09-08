@@ -1,9 +1,8 @@
-import type { ReactNode } from 'react';
-import { motion, type HTMLMotionProps } from 'framer-motion';
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
-type ButtonVariant = 'primary' | 'secondary' | 'ghost';
+type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'inverse';
 
-interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'children'> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   children: ReactNode;
   isLoading?: boolean;
@@ -11,10 +10,11 @@ interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'children'> {
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary:
-    'bg-gradient-to-r from-brand-pink to-brand-pink-dark text-white shadow-lg shadow-brand-pink/25 hover:shadow-xl hover:shadow-brand-pink/30',
+    'bg-brand-primary text-white shadow-[0_4px_16px_rgba(79,70,229,0.3)] hover:bg-brand-primary-hover',
   secondary:
-    'bg-white text-brand-navy border border-slate-200/80 hover:border-brand-pink/40 shadow-sm',
-  ghost: 'bg-transparent text-brand-navy hover:bg-brand-bg-soft',
+    'bg-transparent text-brand-ink border border-brand-border hover:border-brand-primary hover:bg-brand-bg-soft',
+  ghost: 'bg-transparent text-brand-ink hover:bg-brand-bg-soft',
+  inverse: 'bg-white text-brand-primary shadow-lg hover:bg-brand-bg-soft',
 };
 
 export function Button({
@@ -23,18 +23,17 @@ export function Button({
   isLoading = false,
   className = '',
   disabled,
+  type = 'button',
   ...rest
 }: ButtonProps) {
   return (
-    <motion.button
-      whileHover={{ scale: disabled || isLoading ? 1 : 1.02 }}
-      whileTap={{ scale: disabled || isLoading ? 1 : 0.97 }}
-      transition={{ duration: 0.2 }}
+    <button
+      type={type}
       disabled={disabled || isLoading}
-      className={`inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-70 ${VARIANT_CLASSES[variant]} ${className}`}
+      className={`press inline-flex items-center justify-center gap-2 rounded-lg px-7 py-3.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none ${VARIANT_CLASSES[variant]} ${className}`}
       {...rest}
     >
       {children}
-    </motion.button>
+    </button>
   );
 }

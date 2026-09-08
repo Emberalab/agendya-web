@@ -2,24 +2,24 @@ import type { StepItem } from '../types';
 
 export const STEPS: StepItem[] = [
   {
-    id: 'join',
-    number: 1,
-    title: 'Únete a la lista de espera',
-    description: 'Completa el formulario con los datos de tu negocio en menos de un minuto.',
-    icon: 'UserPlus',
+    id: 'configure',
+    number: '01',
+    title: 'Configura',
+    description:
+      'Crea tus servicios, precios, duración y tus horarios disponibles en un panel simple.',
   },
   {
-    id: 'early-access',
-    number: 2,
-    title: 'Recibe acceso anticipado',
-    description: 'Te avisamos por correo y WhatsApp apenas Agendya esté disponible para ti.',
-    icon: 'MailCheck',
+    id: 'share',
+    number: '02',
+    title: 'Comparte',
+    description:
+      'Envía tu enlace personalizado de Agendya por WhatsApp, ponlo en tu bio de Instagram o web.',
   },
   {
-    id: 'start',
-    number: 3,
-    title: 'Empieza a organizar tu agenda sin esfuerzo',
-    description: 'Configura tus servicios y horarios, y deja que Agendya haga el resto.',
-    icon: 'Rocket',
+    id: 'receive',
+    number: '03',
+    title: 'Recibe reservas',
+    description:
+      'Tus clientes eligen directamente el servicio, fecha y hora libres. Todo se sincroniza solo.',
   },
 ];

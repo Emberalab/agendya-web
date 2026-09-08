@@ -1,0 +1,16 @@
+export const FEATURES: string[] = [
+  'Agenda de citas',
+  'Gestión servicios',
+  'A domicilio',
+  'Precio y duración',
+  'Horarios semanales',
+  'Bloqueo fechas',
+  'Perfil público',
+  'Enlace reservas',
+  'Reserva online',
+  'Notificaciones',
+  'Reprogramación',
+  'Cancelación',
+  'Correos',
+  'Diseño responsive',
+];

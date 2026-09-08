@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-import { Quote } from 'lucide-react';
 import type { Testimonial } from '../types';
 
 interface TestimonialCardProps {
@@ -8,27 +6,24 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ testimonial }: TestimonialCardProps) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.5 }}
-      whileHover={{ y: -4 }}
-      className="flex h-full flex-col gap-4 rounded-2xl border border-slate-200/60 bg-white p-6 shadow-sm"
-    >
-      <Quote className="text-brand-pink/40" size={28} aria-hidden="true" />
-      <p className="flex-1 text-sm leading-relaxed text-brand-navy">“{testimonial.quote}”</p>
-      <div className="flex items-center gap-3 border-t border-slate-100 pt-4">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-pink/10 text-sm font-bold text-brand-pink">
+    <figure className="reveal m-0 flex h-full flex-col gap-4 rounded-xl border border-brand-border bg-brand-bg-soft p-6">
+      <blockquote className="m-0 flex-1 text-sm italic leading-relaxed text-brand-slate">
+        &ldquo;{testimonial.quote}&rdquo;
+      </blockquote>
+      <figcaption className="flex items-center gap-3">
+        <span
+          aria-hidden="true"
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-primary/10 text-xs font-bold text-brand-primary"
+        >
           {testimonial.initials}
-        </div>
-        <div>
-          <p className="text-sm font-semibold text-brand-navy">{testimonial.name}</p>
-          <p className="text-xs text-brand-text-secondary">
+        </span>
+        <span>
+          <span className="block text-[13px] font-bold text-brand-slate">{testimonial.name}</span>
+          <span className="block text-xs text-brand-text">
             {testimonial.business} · {testimonial.city}
-          </p>
-        </div>
-      </div>
-    </motion.article>
+          </span>
+        </span>
+      </figcaption>
+    </figure>
   );
 }

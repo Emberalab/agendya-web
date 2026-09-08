@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { SectionHeading } from '../components/SectionHeading';
 import { IconTile } from '../components/IconTile';
 import { BENEFITS } from '../constants/benefits';
@@ -7,40 +6,34 @@ import { getIcon } from '../utils/iconMap';
 
 export function Benefits() {
   return (
-    <section aria-label="Beneficios de Agendya" className="bg-brand-bg-soft px-6 py-20">
-      <div className="mx-auto flex max-w-6xl flex-col gap-12">
-        <SectionHeading
-          eyebrow={COPY.benefits.eyebrow}
-          title={COPY.benefits.title}
-          subtitle={COPY.benefits.subtitle}
-        />
+    <section
+      aria-labelledby="benefits-title"
+      className="bg-white px-4 py-16 sm:px-6 sm:py-18 lg:px-12"
+    >
+      <div className="mx-auto flex max-w-7xl flex-col gap-12">
+        <div className="flex justify-center">
+          <SectionHeading
+            eyebrow={COPY.benefits.eyebrow}
+            title={COPY.benefits.title}
+            id="benefits-title"
+          />
+        </div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
-          className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-        >
+        <ul className="grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
           {BENEFITS.map((benefit) => {
             const Icon = getIcon(benefit.icon);
             return (
-              <motion.div
+              <li
                 key={benefit.id}
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                transition={{ duration: 0.4 }}
-                whileHover={{ y: -4 }}
-                className="flex flex-col gap-4 rounded-2xl border border-slate-200/60 bg-white p-6 shadow-sm"
+                className="reveal hover-lift flex flex-col gap-3 rounded-xl border border-brand-border bg-white p-5 shadow-[0_10px_24px_rgba(79,70,229,0.08),0_4px_12px_rgba(15,23,42,0.02)]"
               >
-                <IconTile icon={Icon} tone="mint" />
-                <h3 className="text-base font-semibold text-brand-navy">{benefit.title}</h3>
-                <p className="text-sm leading-relaxed text-brand-text-secondary">
-                  {benefit.description}
-                </p>
-              </motion.div>
+                <IconTile icon={Icon} />
+                <h3 className="text-lg font-bold text-brand-ink">{benefit.title}</h3>
+                <p className="text-sm leading-relaxed text-brand-text">{benefit.description}</p>
+              </li>
             );
           })}
-        </motion.div>
+        </ul>
       </div>
     </section>
   );
