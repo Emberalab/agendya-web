@@ -2,39 +2,75 @@ import type { FAQItem } from '../types';
 
 export const FAQ_ITEMS: FAQItem[] = [
   {
-    id: 'price',
-    question: '¿Cuánto va a costar Agendya?',
+    id: 'cost',
+    question: '¿Tiene algún costo registrarse?',
     answer:
-      'Los negocios que se unan a la lista de espera obtendrán acceso anticipado gratuito y condiciones preferenciales cuando lancemos los planes de pago. Aún no hemos definido el precio final.',
+      'No. Puedes usar la versión gratuita de Agendya todo el tiempo que quieras para gestionar hasta 30 citas mensuales sin ingresar tarjetas de crédito.',
   },
   {
-    id: 'launch',
-    question: '¿Cuándo lanza Agendya?',
+    id: 'app-download',
+    question: '¿Mis clientes deben descargar alguna aplicación?',
     answer:
-      'Estamos en fase de pre-lanzamiento. Los cupos de acceso anticipado son limitados y se entregan en orden de inscripción a la lista de espera.',
+      'Para nada. Tus clientes abren tu enlace desde cualquier celular o navegador web y agendan de inmediato.',
   },
   {
-    id: 'tech-skills',
-    question: '¿Necesito saber de tecnología para usarlo?',
+    id: 'free-limit',
+    question: '¿Qué pasa si supero el límite del plan gratis?',
     answer:
-      'No. Agendya está diseñado para dueños de negocios de belleza sin experiencia técnica. Si sabes usar WhatsApp, sabrás usar Agendya.',
+      'Te notificaremos con antelación para sugerirte el paso al plan Básico para que sigas agendando sin bloqueos o contratiempos.',
   },
   {
-    id: 'whatsapp',
-    question: '¿Funciona con WhatsApp?',
+    id: 'client-account',
+    question: '¿Mis clientes necesitan crear una cuenta?',
     answer:
-      'Sí. Agendya envía confirmaciones y recordatorios de citas directamente por WhatsApp para que tus clientes nunca olviden su reserva.',
+      'No. Tus clientes pueden reservar directamente desde tu enlace público de Agendya, sin registrarse.',
   },
   {
-    id: 'data-security',
-    question: '¿Mis datos y los de mis clientes están seguros?',
+    id: 'home-service',
+    question: '¿Puedo ofrecer servicios a domicilio?',
     answer:
-      'Sí. La información de tu negocio y de tus clientes se maneja de forma privada y segura, y nunca se comparte con terceros.',
+      'Sí. Puedes indicar qué servicios también realizas a domicilio y configurar una duración y precio diferentes para esa modalidad.',
   },
   {
-    id: 'cancellation',
-    question: '¿Puedo cancelar cuando quiera?',
+    id: 'on-booking',
+    question: '¿Qué pasa cuando un cliente reserva?',
     answer:
-      'Por supuesto. No hay contratos de permanencia. Puedes darte de baja del acceso anticipado cuando lo desees, sin costo alguno.',
+      'La cita queda confirmada automáticamente y el horario deja de estar disponible para otros clientes.',
+  },
+  {
+    id: 'reschedule',
+    question: '¿Puedo reprogramar o cancelar una cita?',
+    answer:
+      'Sí. Desde tu agenda puedes reprogramar o cancelar las citas que tengas registradas.',
+  },
+  {
+    id: 'use-free',
+    question: '¿Puedo usar Agendya gratis?',
+    answer:
+      'Sí. Agendya tendrá un plan Gratis con límites de uso para que puedas empezar sin pagar.',
+  },
+  {
+    id: 'commission',
+    question: '¿Agendya cobra comisión por cada cita?',
+    answer:
+      'No. Agendya funciona mediante planes de suscripción y no cobra comisión por cada reserva.',
+  },
+  {
+    id: 'share',
+    question: '¿Puedo compartir mi agenda por WhatsApp o Instagram?',
+    answer:
+      'Sí. Agendya te genera un enlace público que puedes compartir con tus clientes por WhatsApp, Instagram o cualquier otro canal.',
+  },
+  {
+    id: 'schedule',
+    question: '¿Puedo definir mis horarios de atención?',
+    answer:
+      'Sí. Puedes configurar los días y horarios en los que quieres recibir reservas.',
+  },
+  {
+    id: 'client-view',
+    question: '¿Qué información verá mi cliente al reservar?',
+    answer:
+      'Podrá ver tus servicios disponibles, precios, duración, modalidad de atención y los horarios disponibles para reservar.',
   },
 ];

@@ -2,22 +2,15 @@ import type { LucideIcon } from 'lucide-react';
 
 interface IconTileProps {
   icon: LucideIcon;
-  tone?: 'pink' | 'mint' | 'navy';
   className?: string;
 }
 
-const TONE_CLASSES: Record<NonNullable<IconTileProps['tone']>, string> = {
-  pink: 'bg-brand-pink/10 text-brand-pink',
-  mint: 'bg-brand-mint/10 text-brand-mint',
-  navy: 'bg-brand-navy/5 text-brand-navy',
-};
-
-export function IconTile({ icon: Icon, tone = 'pink', className = '' }: IconTileProps) {
+export function IconTile({ icon: Icon, className = '' }: IconTileProps) {
   return (
     <div
-      className={`flex h-12 w-12 items-center justify-center rounded-xl ${TONE_CLASSES[tone]} ${className}`}
+      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-brand-primary/15 bg-brand-primary/8 text-brand-primary ${className}`}
     >
-      <Icon size={22} aria-hidden="true" />
+      <Icon size={18} aria-hidden="true" />
     </div>
   );
 }
