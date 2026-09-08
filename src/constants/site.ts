@@ -4,7 +4,7 @@
  */
 const rawSiteUrl =
   (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SITE_URL) ||
-  'https://emberalab.github.io/agendya-web';
+  'https://agendya.co';
 
 export const SITE = {
   /** URL canónica de producción, sin barra final. */
