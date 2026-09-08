@@ -24,7 +24,7 @@ const env = loadEnv('production', root, 'VITE_');
 const SITE_URL = (
   process.env.VITE_SITE_URL ||
   env.VITE_SITE_URL ||
-  'https://emberalab.github.io/agendya-web'
+  'https://agendya.co'
 ).replace(/\/$/, '');
 
 const esc = (s) => String(s).replace(/</g, '\\u003c');
@@ -132,7 +132,7 @@ async function main() {
     // 2) CSS crítico inline (quita el <link rel=stylesheet> bloqueante)
     const cssLink = html.match(/<link rel="stylesheet"[^>]*href="([^"]+)"[^>]*>/);
     if (cssLink) {
-      const cssPath = path.join(dist, cssLink[1].replace('/agendya-web/', ''));
+      const cssPath = path.join(dist, cssLink[1].replace(/^\//, ''));
       const css = await readFile(cssPath, 'utf8');
       html = html.replace(cssLink[0], `<style>${css}</style>`);
       // El CSS ya va inline: el archivo suelto sería peso muerto en el deploy.
@@ -149,7 +149,7 @@ async function main() {
       )
       .map(
         (f) =>
-          `<link rel="preload" as="font" type="font/woff2" crossorigin href="/agendya-web/assets/${f}" />`,
+          `<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/${f}" />`,
       )
       .join('\n    ');
 
