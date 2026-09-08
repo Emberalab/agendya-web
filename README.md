@@ -1,6 +1,48 @@
-# React + TypeScript + Vite
+# Agendya — Landing
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Landing de Agendya. React 19 + TypeScript + Vite, **pre-renderizado a HTML
+estático** e hidratado en el cliente.
+
+## Scripts
+
+| Comando | Descripción |
+| --- | --- |
+| `npm run dev` | Servidor de desarrollo con HMR (render 100% en cliente). |
+| `npm run build` | `tsc -b` + `vite build` + `scripts/prerender.mjs` → `dist/`. |
+| `npm run build:nocheck` | Igual sin type-check (útil en iteración). |
+| `npm run preview` | Sirve el build de producción en `localhost:4173`. |
+| `npm run lint` | Oxlint. |
+| `npm test` | Vitest (una pasada). |
+| `npm run test:watch` | Vitest en watch. |
+| `npm run typecheck:test` | Type-check de los tests. |
+
+### Pre-render / SEO
+
+`scripts/prerender.mjs` corre tras `vite build`:
+
+- renderiza `<App />` con `react-dom/server` e inyecta el HTML en `#root`
+  (contenido, titulares y FAQ rastreables sin ejecutar JS; mejor LCP/FCP);
+- inserta el CSS crítico inline y precarga las fuentes woff2 latinas;
+- inyecta JSON-LD (`Organization`, `WebSite`, `SoftwareApplication`,
+  `FAQPage`) generado desde las constantes de `src/constants/`.
+
+`src/main.tsx` hidrata ese marcado (`hydrateRoot`); en `dev` el contenedor
+está vacío y se usa `createRoot`.
+
+El dominio de producción se toma de `VITE_SITE_URL`
+(por defecto `https://emberalab.github.io/agendya-web`). Metadatos, canonical,
+`robots.txt`, `sitemap.xml`, iconos, `og-image.jpg` y `site.webmanifest`
+viven en `public/` / `index.html`.
+
+Las fuentes (Outfit + Plus Jakarta Sans, variables, subconjunto latino) están
+**self-hosted** en `src/assets/fonts/` — sin peticiones a Google Fonts.
+
+Los tests viven junto al código (`src/**/*.test.ts[x]`), Vitest + Testing
+Library sobre `jsdom` (setup en `src/test/setup.ts`).
+
+---
+
+This project started from Vite's React + TypeScript template.
 
 Currently, two official plugins are available:
 

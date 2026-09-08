@@ -1,51 +1,41 @@
-import { Suspense, lazy } from 'react';
 import { Header } from '../sections/Header';
 import { Hero } from '../sections/Hero';
-import { TrustLogos } from '../sections/TrustLogos';
 import { Problem } from '../sections/Problem';
-import { Solution } from '../sections/Solution';
+import { HowItWorks } from '../sections/HowItWorks';
 import { ProductShowcase } from '../sections/ProductShowcase';
 import { Benefits } from '../sections/Benefits';
-import { HowItWorks } from '../sections/HowItWorks';
+import { Features } from '../sections/Features';
+import { Pricing } from '../sections/Pricing';
+import { EarlyAccess } from '../sections/EarlyAccess';
+import { Waitlist } from '../sections/Waitlist';
+import { FAQ } from '../sections/FAQ';
 import { FinalCTA } from '../sections/FinalCTA';
-
-// Secciones below-the-fold no críticas para la primera pintura: se cargan
-// de forma diferida para mejorar el rendimiento inicial.
-const Testimonials = lazy(() =>
-  import('../sections/Testimonials').then((module) => ({ default: module.Testimonials })),
-);
-const FAQ = lazy(() => import('../sections/FAQ').then((module) => ({ default: module.FAQ })));
-const Footer = lazy(() =>
-  import('../sections/Footer').then((module) => ({ default: module.Footer })),
-);
-
-function SectionFallback() {
-  return <div className="h-40 w-full animate-pulse-soft bg-brand-bg-soft" aria-hidden="true" />;
-}
+import { Footer } from '../sections/Footer';
 
 export function LandingPage() {
   return (
     <>
+      <a
+        href="#contenido"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+      >
+        Saltar al contenido
+      </a>
       <Header />
-      <main>
+      <main id="contenido" tabIndex={-1} className="outline-none">
         <Hero />
-        <TrustLogos />
         <Problem />
-        <Solution />
+        <HowItWorks />
         <ProductShowcase />
         <Benefits />
-        <HowItWorks />
-        <Suspense fallback={<SectionFallback />}>
-          <Testimonials />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
-          <FAQ />
-        </Suspense>
+        <Features />
+        <Pricing />
+        <EarlyAccess />
+        <Waitlist />
+        <FAQ />
         <FinalCTA />
       </main>
-      <Suspense fallback={<SectionFallback />}>
-        <Footer />
-      </Suspense>
+      <Footer />
     </>
   );
 }

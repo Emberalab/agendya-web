@@ -1,58 +1,57 @@
 export const COPY = {
   hero: {
-    eyebrow: 'Acceso anticipado · cupos limitados',
-    title: 'Tu agenda ocupada, sin dolores de cabeza.',
-    highlight: 'sin dolores de cabeza.',
+    title: 'Tu agenda, tus clientes y tu tiempo bajo control',
     subtitle:
-      'Agendya organiza las citas de tu barbería, salón o estudio de belleza en un solo lugar, para que dejes de perder clientes por mensajes de WhatsApp perdidos o dobles reservas.',
-    ctaPrimary: 'Únete a la lista de espera',
+      'Agendya te ayuda a recibir y organizar reservas sin estar pendiente del WhatsApp todo el día. Tus clientes reservan solos, 24/7.',
+    ctaPrimary: 'Quiero probar Agendya',
     ctaSecondary: 'Ver cómo funciona',
-    microcopy: 'Gratis durante el lanzamiento. Sin tarjeta de crédito.',
-  },
-  trust: {
-    title: 'Próximamente cientos de negocios organizarán sus citas con Agendya.',
+    microcopy: 'Empieza gratis · Sin complicaciones',
   },
   problem: {
-    eyebrow: 'El problema',
-    title: 'Administrar tu agenda a la antigua te está costando dinero',
-    subtitle:
-      'Si te suena familiar, no estás solo: la mayoría de los negocios de belleza en LATAM todavía agendan citas de forma manual.',
-  },
-  solution: {
-    eyebrow: 'La solución',
-    title: 'Una agenda que trabaja para ti, no al revés',
-    subtitle:
-      'Agendya reemplaza el cuaderno, las notas de WhatsApp y las hojas de cálculo con una sola herramienta simple, pensada para negocios de belleza.',
-  },
-  showcase: {
-    eyebrow: 'Así se ve Agendya',
-    title: 'Toda tu agenda, organizada y a un clic de distancia',
-    subtitle:
-      'Diseñado para que lo uses desde tu celular entre un corte y otro, sin cursos ni manuales.',
-  },
-  benefits: {
-    eyebrow: 'Beneficios',
-    title: 'Todo lo que ganas al unirte a Agendya',
-    subtitle: 'Resultados reales para tu negocio, desde el primer día.',
+    eyebrow: 'El desafío',
+    title: 'Organizar citas no debería consumir tu día',
+    closing: 'Agendya convierte todo ese proceso en una agenda que trabaja contigo.',
   },
   howItWorks: {
-    eyebrow: 'Cómo funciona',
-    title: 'Tres pasos y listo',
-    subtitle: 'Así de simple es empezar a organizar tu negocio con Agendya.',
+    eyebrow: 'Paso a paso',
+    title: 'Empieza en minutos',
   },
-  testimonials: {
-    eyebrow: 'Lo que dirán nuestros primeros usuarios',
-    title: 'Negocios como el tuyo ya están esperando su acceso',
+  showcase: {
+    eyebrow: 'En acción',
+    title: 'Así funciona Agendya',
+    cta: 'Ver Agendya en acción',
+    tabs: { pro: 'Para ti', clients: 'Para clientes' },
+  },
+  benefits: {
+    eyebrow: 'Por qué elegirnos',
+    title: 'Menos mensajes. Más organización. Más tiempo.',
+  },
+  features: {
+    eyebrow: 'Características',
+    title: 'Todo lo que necesitas para empezar a organizar',
+  },
+  pricing: {
+    eyebrow: 'Precios transparentes',
+    title: 'Empieza gratis. Crece cuando lo necesites.',
+  },
+  earlyUsers: {
+    eyebrow: 'Beta',
+    title: 'Sé de los primeros en probarlo',
+    cta: 'Quiero ser de los primeros',
+  },
+  waitlist: {
+    eyebrow: 'Acceso anticipado',
+    title: 'Prueba Agendya antes que nadie',
   },
   faq: {
-    eyebrow: 'Preguntas frecuentes',
-    title: 'Resolvemos tus dudas',
+    eyebrow: 'Soporte',
+    title: 'Preguntas frecuentes',
   },
   finalCta: {
-    eyebrow: 'Cupos de acceso anticipado limitados',
-    title: '¿Listo para organizar tu agenda de una vez por todas?',
-    subtitle:
-      'Únete hoy a la lista de espera y sé de los primeros en usar Agendya cuando lancemos. Acceso anticipado gratuito para los primeros negocios inscritos.',
+    title: 'Dedica menos tiempo a organizar citas y más tiempo a atender',
+    subtitle: 'Empieza a organizar tu agenda con Agendya.',
+    cta: 'Probar Agendya',
+    microcopy: 'Es gratis',
   },
   form: {
     title: 'Únete a la lista de espera',
@@ -77,5 +76,11 @@ export const COPY = {
     successSubtitle: 'Te escribiremos muy pronto con tu acceso anticipado a Agendya.',
     errorMessage: 'Algo salió mal. Por favor intenta de nuevo en unos minutos.',
     privacy: 'Al unirte aceptas recibir novedades sobre el lanzamiento de Agendya.',
+  },
+  footer: {
+    blurb:
+      'La plataforma de reservas en línea diseñada para profesionales del servicio en América Latina.',
+    madeIn: 'Hecho con 💜 en Colombia',
+    rights: '© 2026 Agendya. Todos los derechos reservados.',
   },
 } as const;

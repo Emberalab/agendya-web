@@ -10,13 +10,13 @@ export function Input({ label, error, id, className = '', ...rest }: InputProps)
 
   return (
     <div className="flex flex-col gap-1.5 text-left">
-      <label htmlFor={inputId} className="text-sm font-medium text-brand-navy">
+      <label htmlFor={inputId} className="text-sm font-bold text-brand-slate">
         {label}
       </label>
       <input
         id={inputId}
-        className={`rounded-xl border bg-white px-4 py-3 text-sm text-brand-navy placeholder:text-slate-400 outline-none transition-colors focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/20 ${
-          error ? 'border-red-400' : 'border-slate-200'
+        className={`rounded-lg border bg-white px-4 py-3 text-sm text-brand-ink outline-none transition-colors placeholder:text-brand-muted focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 ${
+          error ? 'border-red-400' : 'border-brand-border'
         } ${className}`}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${inputId}-error` : undefined}

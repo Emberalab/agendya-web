@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { SectionHeading } from '../components/SectionHeading';
 import { IconTile } from '../components/IconTile';
 import { PROBLEMS } from '../constants/problems';
@@ -7,40 +6,36 @@ import { getIcon } from '../utils/iconMap';
 
 export function Problem() {
   return (
-    <section aria-label="El problema que resolvemos" className="bg-white px-6 py-20">
-      <div className="mx-auto flex max-w-6xl flex-col gap-12">
-        <SectionHeading
-          eyebrow={COPY.problem.eyebrow}
-          title={COPY.problem.title}
-          subtitle={COPY.problem.subtitle}
-        />
+    <section
+      aria-labelledby="problem-title"
+      className="bg-linear-to-b from-white to-brand-bg-soft px-4 py-16 sm:px-6 sm:py-18 lg:px-12"
+    >
+      <div className="mx-auto flex max-w-7xl flex-col gap-12">
+        <div className="flex justify-center">
+          <SectionHeading
+            eyebrow={COPY.problem.eyebrow}
+            title={COPY.problem.title}
+            id="problem-title"
+          />
+        </div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
-          className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-        >
+        <ul className="grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
           {PROBLEMS.map((problem) => {
             const Icon = getIcon(problem.icon);
             return (
-              <motion.div
+              <li
                 key={problem.id}
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                transition={{ duration: 0.4 }}
-                whileHover={{ y: -4 }}
-                className="flex flex-col gap-4 rounded-2xl border border-slate-200/60 bg-brand-bg-soft/50 p-6"
+                className="reveal hover-lift flex flex-col gap-3 rounded-xl border border-brand-border bg-white p-5 shadow-[0_10px_24px_rgba(79,70,229,0.08),0_6px_16px_rgba(15,23,42,0.04)]"
               >
-                <IconTile icon={Icon} tone="navy" />
-                <h3 className="text-base font-semibold text-brand-navy">{problem.title}</h3>
-                <p className="text-sm leading-relaxed text-brand-text-secondary">
-                  {problem.description}
-                </p>
-              </motion.div>
+                <IconTile icon={Icon} />
+                <h3 className="text-lg font-bold text-brand-ink">{problem.title}</h3>
+                <p className="text-sm leading-relaxed text-brand-text">{problem.description}</p>
+              </li>
             );
           })}
-        </motion.div>
+        </ul>
+
+        <p className="text-center text-lg font-bold text-brand-primary">{COPY.problem.closing}</p>
       </div>
     </section>
   );

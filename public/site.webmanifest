@@ -1,0 +1,21 @@
+{
+  "name": "Agendya — agenda y reservas online",
+  "short_name": "Agendya",
+  "description": "Software de agenda y reservas online para negocios de servicios. Tus clientes reservan solos 24/7 desde un enlace.",
+  "lang": "es",
+  "start_url": "/agendya-web/",
+  "scope": "/agendya-web/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f46e5",
+  "icons": [
+    { "src": "/agendya-web/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/agendya-web/icon-512.png", "type": "image/png", "sizes": "512x512" },
+    {
+      "src": "/agendya-web/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ]
+}

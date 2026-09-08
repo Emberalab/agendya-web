@@ -1,49 +1,39 @@
-import { motion } from 'framer-motion';
-import { Badge } from '../components/Badge';
-import { WaitlistForm } from '../components/WaitlistForm';
 import { COPY } from '../constants/copy';
+import { SITE } from '../constants/site';
 
 export function FinalCTA() {
   return (
     <section
-      aria-label="Únete a la lista de espera"
-      className="relative overflow-hidden bg-brand-navy px-6 py-24"
+      aria-labelledby="final-cta-title"
+      className="relative overflow-hidden bg-linear-to-r from-brand-primary-dark via-brand-primary to-brand-primary px-6 py-20 sm:py-24 lg:px-20"
     >
       <div
-        className="pointer-events-none absolute -top-24 left-1/4 h-80 w-80 rounded-full bg-brand-pink/20 blur-3xl"
+        className="pointer-events-none absolute -left-40 -top-40 h-80 w-80 rounded-full bg-white/8"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-brand-mint/10 blur-3xl"
+        className="pointer-events-none absolute -bottom-36 -right-36 h-72 w-72 rounded-full bg-white/8"
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto grid max-w-5xl gap-12 lg:grid-cols-2 lg:items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col gap-5 text-left"
+      <div className="reveal relative mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
+        <h2
+          id="final-cta-title"
+          className="font-display text-[clamp(1.75rem,5vw,3rem)] font-extrabold leading-[1.15] tracking-[-1.5px] text-white"
         >
-          <Badge className="bg-white/10 text-white">{COPY.finalCta.eyebrow}</Badge>
-          <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl">
-            {COPY.finalCta.title}
-          </h2>
-          <p className="max-w-md text-brand-bg-soft/80">{COPY.finalCta.subtitle}</p>
-        </motion.div>
+          {COPY.finalCta.title}
+        </h2>
+        <p className="text-lg text-brand-bg-lavender">{COPY.finalCta.subtitle}</p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="rounded-3xl bg-white p-6 shadow-2xl sm:p-8"
-        >
-          <h3 className="mb-1 text-lg font-bold text-brand-navy">{COPY.form.title}</h3>
-          <p className="mb-6 text-sm text-brand-text-secondary">{COPY.form.subtitle}</p>
-          <WaitlistForm id="waitlist-form" />
-        </motion.div>
+        <div className="mt-4 flex flex-col items-center gap-3">
+          <a
+            href={SITE.appSignupUrl}
+            className="press inline-flex items-center justify-center rounded-lg bg-white px-8 py-3.5 text-base font-bold text-brand-primary shadow-lg transition-colors hover:bg-brand-bg-soft motion-reduce:transition-none"
+          >
+            {COPY.finalCta.cta}
+          </a>
+          <p className="text-[13px] text-brand-bg-lavender">{COPY.finalCta.microcopy}</p>
+        </div>
       </div>
     </section>
   );

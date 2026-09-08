@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.agendya.com/sitemap.xml
+Sitemap: https://emberalab.github.io/agendya-web/sitemap.xml

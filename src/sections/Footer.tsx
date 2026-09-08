@@ -1,54 +1,75 @@
-import { AtSign, Globe, X } from 'lucide-react';
 import { Logo } from '../components/Logo';
+import { COPY } from '../constants/copy';
 
-const SOCIAL_LINKS = [
-  { icon: AtSign, label: 'Instagram', href: '#' },
-  { icon: Globe, label: 'Facebook', href: '#' },
-  { icon: X, label: 'X (Twitter)', href: '#' },
-];
-
-const FOOTER_LINKS = [
-  { label: 'Sobre Agendya', href: '#' },
-  { label: 'Preguntas frecuentes', href: '#faq' },
-  { label: 'Contacto', href: '#' },
-  { label: 'Privacidad', href: '#' },
+const FOOTER_COLUMNS = [
+  {
+    id: 'producto',
+    title: 'Producto',
+    links: [
+      { label: 'Funciones', href: '#funciones' },
+      { label: 'Precios', href: '#precios' },
+      { label: 'Preguntas frecuentes', href: '#faq' },
+    ],
+  },
+  {
+    id: 'empresa',
+    title: 'Empresa',
+    links: [
+      { label: 'Cómo funciona', href: '#como-funciona' },
+      { label: 'Lista de espera', href: '#lista-de-espera' },
+    ],
+  },
+  {
+    id: 'cuenta',
+    title: 'Cuenta',
+    links: [
+      { label: 'Iniciar sesión', href: 'https://app.agendya.com/login' },
+      { label: 'Crear cuenta gratis', href: 'https://app.agendya.com/signup' },
+    ],
+  },
 ];
 
 export function Footer() {
   return (
-    <footer aria-label="Pie de página" className="border-t border-slate-100 bg-white px-6 py-12">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 text-center sm:flex-row sm:justify-between sm:text-left">
-        <Logo />
+    <footer className="bg-brand-ink px-4 pb-6 pt-12 sm:px-6 lg:px-12">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="flex flex-col gap-4">
+            <Logo variant="light" />
+            <p className="max-w-xs text-[13px] leading-relaxed text-brand-muted">
+              {COPY.footer.blurb}
+            </p>
+          </div>
 
-        <nav aria-label="Enlaces del sitio">
-          <ul className="flex flex-wrap items-center justify-center gap-6 text-sm text-brand-text-secondary">
-            {FOOTER_LINKS.map((link) => (
-              <li key={link.label}>
-                <a href={link.href} className="transition-colors hover:text-brand-pink">
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="flex items-center gap-3">
-          {SOCIAL_LINKS.map(({ icon: Icon, label, href }) => (
-            <a
-              key={label}
-              href={href}
-              aria-label={label}
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-bg-soft text-brand-navy transition-colors hover:bg-brand-pink hover:text-white"
-            >
-              <Icon size={16} aria-hidden="true" />
-            </a>
+          {FOOTER_COLUMNS.map((column) => (
+            <nav key={column.id} aria-labelledby={`footer-${column.id}`}>
+              <p
+                id={`footer-${column.id}`}
+                className="mb-4 text-[13px] font-bold uppercase tracking-wider text-white"
+              >
+                {column.title}
+              </p>
+              <ul className="flex list-none flex-col gap-2.5 p-0">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-sm text-brand-on-dark transition-colors hover:text-white motion-reduce:transition-none"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           ))}
         </div>
-      </div>
 
-      <p className="mt-8 text-center text-xs text-brand-text-secondary">
-        © 2026 Agendya. Todos los derechos reservados.
-      </p>
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-brand-slate pt-5">
+          <p className="text-[13px] text-brand-on-dark">{COPY.footer.rights}</p>
+          <p className="text-[13px] text-brand-on-dark">{COPY.footer.madeIn}</p>
+        </div>
+      </div>
     </footer>
   );
 }
