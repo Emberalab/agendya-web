@@ -30,36 +30,36 @@ estático** e hidratado en el cliente.
 está vacío y se usa `createRoot`.
 
 El dominio de producción se toma de `VITE_SITE_URL`
-(por defecto `https://agendya.co`). Metadatos, canonical,
+(por defecto `https://launch.agendya.co`). Metadatos, canonical,
 `robots.txt`, `sitemap.xml`, iconos, `og-image.jpg` y `site.webmanifest`
 viven en `public/` / `index.html`.
 
 ## Deploy a GoDaddy (cPanel)
 
 El workflow `.github/workflows/deploy.yml` en push a `main`: lint, tests, build
-y sube el contenido de `dist/` por FTP a `public_html/agendya.co`. Los PR a
-`main` solo corren CI; no despliegan.
+y sube el contenido de `dist/` por FTP a la carpeta del addon `launch.agendya.co`.
+Los PR a `main` solo corren CI; no despliegan.
 
 ### Secrets de GitHub (`Settings` → `Secrets and variables` → `Actions`)
 
 | Secret | Ejemplo |
 | --- | --- |
-| `FTP_SERVER` | `ftp.agendya.co` (o el host que muestre cPanel) |
-| `FTP_USERNAME` | usuario FTP |
+| `FTP_SERVER` | IP del servidor (la de cPanel) |
+| `FTP_USERNAME` | usuario FTP de esa carpeta |
 | `FTP_PASSWORD` | contraseña FTP |
 
-El workflow sube a `./` (raíz de esa cuenta FTP). Por eso el home FTP debe ser `public_html`.
+El workflow sube a `./` (raíz de esa cuenta FTP). El home FTP debe ser el
+Document Root de `launch.agendya.co`.
 
 ### En el servidor (cPanel)
 
-1. Crea una cuenta FTP con directorio **solo** `public_html` (no el home completo).
-2. Activa SSL (Let's Encrypt / AutoSSL) para `agendya.co`.
-3. El Document Root del dominio debe ser `public_html`.
-4. No instales Node en GoDaddy: se sube HTML/JS/CSS estático.
-5. No borres `.well-known` (renovación SSL). El workflow la excluye.
-6. `public/.htaccess` viaja en el build (HTTPS, `index.html`, caché de assets).
+1. Cuenta FTP cuyo directorio sea el Document Root de `launch.agendya.co` (no `agendya.co`).
+2. Activa SSL (AutoSSL) para `launch.agendya.co`.
+3. No instales Node: se sube HTML/JS/CSS estático.
+4. No borres `.well-known`. El workflow la excluye.
+5. `public/.htaccess` viaja en el build.
 
-Primer deploy: vacía `public_html` de la página por defecto de GoDaddy (`default.html`, etc.) para que no tape `index.html`.
+Primer deploy: que `index.html` quede en esa carpeta, no en un subdirectorio del usuario FTP.
 
 Las fuentes (Outfit + Plus Jakarta Sans, variables, subconjunto latino) están
 **self-hosted** en `src/assets/fonts/` — sin peticiones a Google Fonts.

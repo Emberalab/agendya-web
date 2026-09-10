@@ -15,7 +15,7 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     env:
-      VITE_SITE_URL: https://agendya.co
+      VITE_SITE_URL: https://launch.agendya.co
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -51,7 +51,7 @@ jobs:
           port: 21
           security: loose
           local-dir: ./dist/
-          # Home de la cuenta FTP = carpeta del addon `agendya.co`.
+          # Home de la cuenta FTP = carpeta del addon `launch.agendya.co`.
           server-dir: ./
           exclude: |
             **/.git*

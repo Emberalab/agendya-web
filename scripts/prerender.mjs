@@ -24,7 +24,7 @@ const env = loadEnv('production', root, 'VITE_');
 const SITE_URL = (
   process.env.VITE_SITE_URL ||
   env.VITE_SITE_URL ||
-  'https://agendya.co'
+  'https://launch.agendya.co'
 ).replace(/\/$/, '');
 
 const esc = (s) => String(s).replace(/</g, '\\u003c');
