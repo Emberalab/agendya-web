@@ -41,15 +41,17 @@ jobs:
         with:
           name: dist
           path: dist
-      - name: Upload dist to cPanel via FTP
+      - name: Upload dist to cPanel via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
+          protocol: ftps
+          port: 21
+          security: loose
           local-dir: ./dist/
-          # La cuenta FTP debe tener como directorio home `public_html`.
+          # Home de la cuenta FTP = carpeta del addon `agendya.co`.
           server-dir: ./
           exclude: |
             **/.git*
