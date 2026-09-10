@@ -10,8 +10,8 @@ export const SITE = {
   /** URL canónica de producción, sin barra final. */
   url: rawSiteUrl.replace(/\/$/, ''),
   name: 'Agendya',
-  appSignupUrl: 'https://app.agendya.com/signup',
-  appLoginUrl: 'https://app.agendya.com/login',
+  appSignupUrl: 'https://app.agendya.co/register',
+  appLoginUrl: 'https://app.agendya.co/login',
   waitlistAnchor: '#lista-de-espera',
 } as const;
 

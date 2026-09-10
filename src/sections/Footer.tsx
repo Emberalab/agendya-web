@@ -23,8 +23,8 @@ const FOOTER_COLUMNS = [
     id: 'cuenta',
     title: 'Cuenta',
     links: [
-      { label: 'Iniciar sesión', href: 'https://app.agendya.com/login' },
-      { label: 'Crear cuenta gratis', href: 'https://app.agendya.com/signup' },
+      { label: 'Iniciar sesión', href: 'https://app.agendya.co/login' },
+      { label: 'Crear cuenta gratis', href: 'https://app.agendya.co/register' },
     ],
   },
 ];
