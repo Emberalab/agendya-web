@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# cPanel waitlist DB/mail secrets (uploaded once via File Manager)
+public/api/waitlist.secrets.php
+

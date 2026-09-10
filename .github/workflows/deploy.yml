@@ -62,3 +62,4 @@ jobs:
             **/cgi-bin/**
             **/.well-known/**
             **/.ftpquota
+            **/waitlist.secrets.php
