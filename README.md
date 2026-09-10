@@ -30,9 +30,36 @@ estático** e hidratado en el cliente.
 está vacío y se usa `createRoot`.
 
 El dominio de producción se toma de `VITE_SITE_URL`
-(por defecto `https://emberalab.github.io/agendya-web`). Metadatos, canonical,
+(por defecto `https://agendya.co`). Metadatos, canonical,
 `robots.txt`, `sitemap.xml`, iconos, `og-image.jpg` y `site.webmanifest`
 viven en `public/` / `index.html`.
+
+## Deploy a GoDaddy (cPanel)
+
+El workflow `.github/workflows/deploy.yml` en push a `main`: lint, tests, build
+y sube el contenido de `dist/` por FTP a `public_html/agendya.co`. Los PR a
+`main` solo corren CI; no despliegan.
+
+### Secrets de GitHub (`Settings` → `Secrets and variables` → `Actions`)
+
+| Secret | Ejemplo |
+| --- | --- |
+| `FTP_SERVER` | `ftp.agendya.co` (o el host que muestre cPanel) |
+| `FTP_USERNAME` | usuario FTP |
+| `FTP_PASSWORD` | contraseña FTP |
+
+El workflow sube a `./` (raíz de esa cuenta FTP). Por eso el home FTP debe ser `public_html`.
+
+### En el servidor (cPanel)
+
+1. Crea una cuenta FTP con directorio **solo** `public_html` (no el home completo).
+2. Activa SSL (Let's Encrypt / AutoSSL) para `agendya.co`.
+3. El Document Root del dominio debe ser `public_html`.
+4. No instales Node en GoDaddy: se sube HTML/JS/CSS estático.
+5. No borres `.well-known` (renovación SSL). El workflow la excluye.
+6. `public/.htaccess` viaja en el build (HTTPS, `index.html`, caché de assets).
+
+Primer deploy: vacía `public_html` de la página por defecto de GoDaddy (`default.html`, etc.) para que no tape `index.html`.
 
 Las fuentes (Outfit + Plus Jakarta Sans, variables, subconjunto latino) están
 **self-hosted** en `src/assets/fonts/` — sin peticiones a Google Fonts.

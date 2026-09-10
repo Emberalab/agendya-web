@@ -1,22 +1,21 @@
-name: Deploy to GitHub Pages
+name: CI and deploy to GoDaddy
 
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 concurrency:
-  group: pages
+  group: godaddy-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
+    env:
+      VITE_SITE_URL: https://agendya.co
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -28,16 +27,51 @@ jobs:
       - run: npm run typecheck:test
       - run: npm test
       - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
+          name: dist
           path: dist
 
   deploy:
-    needs: build
+    needs: ci
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - name: Upload dist to cPanel via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          security: loose
+          local-dir: ./dist/
+          # Home de la cuenta FTP = carpeta del addon `agendya.co`.
+          server-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/cgi-bin/**
+            **/.well-known/**
+            **/.ftpquota
+      - name: Chmod 644/755 so Apache can read files
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lftp
+          lftp -u "${{ secrets.FTP_USERNAME }}","${{ secrets.FTP_PASSWORD }}" \
+            -e "
+              set ftp:ssl-force true;
+              set ssl:verify-certificate no;
+              chmod 755 .;
+              chmod 644 .htaccess;
+              glob chmod 644 *;
+              chmod 755 assets;
+              glob chmod 644 assets/*;
+              bye
+            " \
+            ftp://${{ secrets.FTP_SERVER }}
