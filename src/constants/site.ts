@@ -4,7 +4,7 @@
  */
 const rawSiteUrl =
   (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SITE_URL) ||
-  'https://agendya.co';
+  'https://launch.agendya.co';
 
 export const SITE = {
   /** URL canónica de producción, sin barra final. */

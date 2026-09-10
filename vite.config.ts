@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Dominio raíz en GoDaddy (agendya.co). /agendya-web/ era solo GitHub Pages.
+  // Dominio raíz en GoDaddy (launch.agendya.co). /agendya-web/ era solo GitHub Pages.
   base: '/',
   plugins: [react(), tailwindcss()],
   build: {

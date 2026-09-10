@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://agendya.co/sitemap.xml
+Sitemap: https://launch.agendya.co/sitemap.xml
