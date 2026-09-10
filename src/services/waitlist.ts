@@ -5,25 +5,26 @@ export interface SubmitWaitlistResponse {
 }
 
 /**
- * Envía los datos del formulario a la lista de espera de Agendya.
- *
- * NOTA: esta es una simulación con `setTimeout` para representar la
- * latencia de red. Está lista para reemplazarse por una llamada real,
- * por ejemplo:
- *
- *   const response = await fetch('https://api.agendya.com/waitlist', {
- *     method: 'POST',
- *     headers: { 'Content-Type': 'application/json' },
- *     body: JSON.stringify(data),
- *   });
- *   return { success: response.ok };
+ * POST same-origin to the cPanel PHP endpoint (GoDaddy). No Railway.
+ * Local `npm run dev` has no PHP: the request 404s unless you point at launch.
  */
-export function submitToWaitlist(data: WaitlistFormData): Promise<SubmitWaitlistResponse> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      // Simulación de un registro exitoso en el backend.
-      console.info('[waitlist] Nuevo registro simulado:', data);
-      resolve({ success: true });
-    }, 1200);
+export async function submitToWaitlist(
+  data: WaitlistFormData,
+): Promise<SubmitWaitlistResponse> {
+  const response = await fetch('/api/waitlist.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
   });
+
+  if (!response.ok) {
+    return { success: false };
+  }
+
+  try {
+    const json = (await response.json()) as { success?: boolean };
+    return { success: Boolean(json.success) };
+  } catch {
+    return { success: false };
+  }
 }
