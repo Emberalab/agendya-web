@@ -60,18 +60,21 @@ jobs:
             **/.well-known/**
             **/.ftpquota
       - name: Chmod 644/755 so Apache can read files
+        env:
+          FTP_USER: ${{ secrets.FTP_USERNAME }}
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_HOST: ${{ secrets.FTP_SERVER }}
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq lftp
-          lftp -u "${{ secrets.FTP_USERNAME }}","${{ secrets.FTP_PASSWORD }}" \
-            -e "
-              set ftp:ssl-force true;
-              set ssl:verify-certificate no;
-              chmod 755 .;
-              chmod 644 .htaccess;
-              glob chmod 644 *;
-              chmod 755 assets;
-              glob chmod 644 assets/*;
-              bye
-            " \
-            ftp://${{ secrets.FTP_SERVER }}
+          lftp -c "
+            set ftp:ssl-force true
+            set ssl:verify-certificate no
+            set cmd:fail-exit no
+            open -u ${FTP_USER} ftp://${FTP_HOST}
+            chmod 755 .
+            chmod 644 index.html
+            chmod 644 .htaccess
+            chmod 755 assets
+            bye
+          "
