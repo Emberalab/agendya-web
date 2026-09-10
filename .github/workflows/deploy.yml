@@ -2,9 +2,9 @@ name: CI and deploy to GoDaddy
 
 on:
   push:
-    branches: [dev]
+    branches: [main]
   pull_request:
-    branches: [dev]
+    branches: [main]
   workflow_dispatch:
 
 concurrency:
@@ -34,7 +34,7 @@ jobs:
 
   deploy:
     needs: ci
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
@@ -59,3 +59,19 @@ jobs:
             **/cgi-bin/**
             **/.well-known/**
             **/.ftpquota
+      - name: Chmod 644/755 so Apache can read files
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lftp
+          lftp -u "${{ secrets.FTP_USERNAME }}","${{ secrets.FTP_PASSWORD }}" \
+            -e "
+              set ftp:ssl-force true;
+              set ssl:verify-certificate no;
+              chmod 755 .;
+              chmod 644 .htaccess;
+              glob chmod 644 *;
+              chmod 755 assets;
+              glob chmod 644 assets/*;
+              bye
+            " \
+            ftp://${{ secrets.FTP_SERVER }}

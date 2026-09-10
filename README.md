@@ -36,8 +36,9 @@ viven en `public/` / `index.html`.
 
 ## Deploy a GoDaddy (cPanel)
 
-El workflow `.github/workflows/deploy.yml` en push a `dev`: lint, tests, build
-y sube el contenido de `dist/` por FTP a `public_html`.
+El workflow `.github/workflows/deploy.yml` en push a `main`: lint, tests, build
+y sube el contenido de `dist/` por FTP a `public_html/agendya.co`. Los PR a
+`main` solo corren CI; no despliegan.
 
 ### Secrets de GitHub (`Settings` → `Secrets and variables` → `Actions`)
 
