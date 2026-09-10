@@ -59,6 +59,21 @@ Document Root de `launch.agendya.co`.
 4. No borres `.well-known`. El workflow la excluye.
 5. `public/.htaccess` viaja en el build.
 
+## Lista de espera (GoDaddy, sin Railway)
+
+El formulario POSTea a `/api/waitlist.php` en el mismo `launch.agendya.co`.
+PHP guarda en MySQL de cPanel y manda un correo a `info@agendya.co`.
+
+1. cPanel → **MySQL® Databases**: crea base y usuario, asígnalo a la base.
+2. phpMyAdmin: importa `public/api/waitlist.sql`.
+3. File Manager, carpeta del addon `launch.agendya.co/api/`: copia
+   `waitlist.secrets.example.php` a `waitlist.secrets.php` y pon host/usuario/
+   contraseña reales. `notify_to` / `notify_from` = `info@agendya.co`.
+4. El buzón `info@agendya.co` ya debe existir (cPanel → Email). PHP usa
+   `mail()` del hosting; no hace falta Railway ni Resend.
+
+El deploy FTP **no** debe borrar `waitlist.secrets.php` (está en `exclude`).
+
 Primer deploy: que `index.html` quede en esa carpeta, no en un subdirectorio del usuario FTP.
 
 Las fuentes (Outfit + Plus Jakarta Sans, variables, subconjunto latino) están
