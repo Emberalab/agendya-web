@@ -4,6 +4,26 @@ declare(strict_types=1);
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 
+$allowedOrigins = [
+    'https://launch.agendya.co',
+    'https://app.agendya.co',
+    'https://app-dev.agendya.co',
+    'https://agendya.co',
+    'http://localhost:5173',
+];
+$requestOrigin = $_SERVER['HTTP_ORIGIN'] ?? '';
+if (in_array($requestOrigin, $allowedOrigins, true)) {
+    header('Access-Control-Allow-Origin: ' . $requestOrigin);
+    header('Access-Control-Allow-Methods: POST, OPTIONS');
+    header('Access-Control-Allow-Headers: Content-Type');
+    header('Vary: Origin');
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['success' => false]);
